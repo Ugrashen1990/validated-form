@@ -1,0 +1,14 @@
+var varDynamically = 'Hello sir';
+console.log(varDynamically, typeof varDynamically);
+varDynamically = 76456;
+console.log(varDynamically, typeof varDynamically);
+varDynamically = true;
+console.log(varDynamically, typeof varDynamically);
+varDynamically = null;
+console.log(varDynamically, typeof varDynamically);
+varDynamically = undefined;
+console.log(varDynamically, typeof varDynamically);
+var num = 43;
+console.log(num, typeof num);
+num = 'hhjhj';
+console.log(num, typeof num);
