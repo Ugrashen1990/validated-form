@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validated login form</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./validation.css">
+</head>
+
+<body>
+    <div class="container"><br>
+        <div class="col-lg-8 m-auto d-block"><br>
+            <h1 class="text-center" style="color: white;">Sign up</h1><br>
+            <form action="#" onsubmit="return validation()" class="bg-light">
+                <div class="form-group">
+                    <label>First name</label>
+                    <input type="text" name="user" class="form-control" id="user" placeholder="Enter your first name">
+                    <span id="userfname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Last name</label>
+                    <input type="text" name="user" class="form-control" id="luser" placeholder="Enter your last name">
+                    <span id="userlname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Emai</label>
+                    <input type="text" name="user" class="form-control" id="emails" placeholder="xyz@.com">
+                    <span id="emailids" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" name="mobile" class="form-control" id="mobile"
+                        placeholder="Enter your 10-digit mobile number">
+                        <span id="mobiles" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <span> Date of birth ?</span><br>
+                    <input type="date" id="date" >
+                </div>
+                <div class="form-group">
+                    <span> Gender ?</span>
+                    <div class="radio">
+                        <input type="radio" id="male" />
+                        <label for="male">Male</label>
+                
+                        <input type="radio" id="female" />
+                        <label for="female">Female</label>
+                
+                        <input type="radio" id="Custom" />
+                        <label for="Custom">Custom</label>
+                    </div>
+                <div class="form-group">
+                    <label>new password</label>
+                    <input type="text" name="pass" class="form-control" id="pass" placeholder="Create a password">
+                    <span id="passwords" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>conform password</label>
+                    <input type="text" name="conpass" class="form-control" id="conpass"
+                        placeholder="Re-enter your password">
+                        <span id="conformpass" class="text-danger"></span>
+                </div>
+                <input type="submit" name="submit" value="submit" class="btn btn-success btn-lg" style="font-weight: 700;">
+            </form>
+        </div>
+    </div>
+    <script>
+function validation(){
+    var user = document.getElementById('user').value;
+    var luser = document.getElementById('luser').value;
+
+    var emails = document.getElementById('emails').value;
+    var mobile = document.getElementById('mobile').value;
+
+    var pass = document.getElementById('pass').value;
+    var conpass = document.getElementById('conpass').value;
+
+
+
+// first name
+
+    if(user == ""){
+        document.getElementById('userfname').innerHTML = "please enter your firstname*";
+        return false;
+    }
+    if((user.length <=2) || (user.length > 20)){
+        document.getElementById('userfname').innerHTML = "your first name should be between 2 and 20 character";
+        return false;
+    }
+    if(!isNaN(user)){
+        document.getElementById('userfname').innerHTML = "your first name should be in character only";
+        return false;
+    }
+
+//last name
+
+    if(luser == ""){
+        document.getElementById('userlname').innerHTML = "please enter your lastname*";
+        return false;
+    }
+    if((luser.length <=2) || (luser.length > 10)){
+        document.getElementById('userlname').innerHTML = "your last name should be between 2 and 10 character";
+        return false;
+    }
+    if(!isNaN(luser)){
+        document.getElementById('userlname').innerHTML = "your last name should be in character only";
+        return false;
+    }
+
+//email
+
+    if(emails == ""){
+        document.getElementById('emailids').innerHTML = "please enter your email Id*";
+        return false;
+    }
+    if(emails.indexOf('@')<=0){
+        document.getElementById('emailids').innerHTML = "please enter a valid email Id*";
+        return false;
+    }
+    if((emails.charAt(emails.length-4)!='.')  && (emails.charAt(emails.length-3)!='.')){
+        document.getElementById('emailids').innerHTML = "please enter a valid email Id*";
+        return false;
+    }
+
+//mobile    
+    if(mobile == ""){
+        document.getElementById('mobiles').innerHTML = "please enter your mobile number*";
+        return false;
+    }
+    if(isNaN(mobile)){
+        document.getElementById('mobiles').innerHTML = "Mobile nuber should be in digit only*";
+        return false;
+    }
+    if(mobile.length!=10){
+        document.getElementById('mobiles').innerHTML = "Mobile nuber should atleast 10 digit";
+        return false;
+    }
+
+
+//password    
+
+    if(pass == ""){
+        document.getElementById('passwords').innerHTML = "please enter your new password*";
+        return false;
+    }
+    if((pass.length<=5) || (pass.length>20)){
+        document.getElementById('passwords').innerHTML = "your password should be between 5 and 20 character*";
+        return false;
+    }
+
+
+//conpassword
+
+    if(conpass == ""){
+        document.getElementById('conformpass').innerHTML = "please Re-enter your password*";
+        return false;
+    }
+    if(conpass!=pass){
+        document.getElementById('conformpass').innerHTML = "your Re-entered password should be same";
+        return false;
+    }
+}
+    </script>
+</body>
+
+</html>
